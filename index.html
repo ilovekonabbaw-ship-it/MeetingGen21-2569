@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สำรวจรายชื่อรวมรุ่น วพบ.ชัยนาท รุ่น 21 · ศรีสะเกษ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Sarabun:wght@400;500;600;700&family=Charmonman:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fff6e9;
+    --bg2:#ffe9cf;
+    --ink:#4a2c12;
+    --ink-soft:#7a5732;
+    --orange:#c75b12;
+    --orange-deep:#a8430a;
+    --gold:#e8a823;
+    --gold-soft:#f4c430;
+    --green:#4d7a35;
+    --green-deep:#3a5d27;
+    --card:#fffaf2;
+    --line:#e9d3b0;
+    --shadow:0 10px 30px -12px rgba(120,60,10,.35);
+    --shadow-sm:0 4px 14px -8px rgba(120,60,10,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Sarabun',sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 85% -10%, #ffd99a55, transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, #ffcaa055, transparent 55%),
+      linear-gradient(160deg,var(--bg),var(--bg2));
+    min-height:100vh;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:18px 16px 70px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;border-radius:26px;overflow:hidden;
+    background:linear-gradient(135deg,#d9650f,#b5430a 55%,#7e2c06);
+    color:#fff5e6;padding:30px 26px 26px;box-shadow:var(--shadow);
+    border:1px solid #ffffff22;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;opacity:.18;pointer-events:none;
+    background:
+      radial-gradient(circle at 80% 120%, #ffe7b0, transparent 40%),
+      repeating-linear-gradient(45deg,#ffffff14 0 14px,transparent 14px 28px);
+  }
+  .hero-badge{position:relative;display:inline-flex;align-items:center;gap:7px;
+    background:#ffffff1f;border:1px solid #ffffff44;padding:5px 14px;border-radius:999px;
+    font-size:.82rem;letter-spacing:.5px;font-weight:600;backdrop-filter:blur(4px)}
+  .hero h1{font-family:'Chonburi',serif;font-weight:400;line-height:1.15;
+    font-size:clamp(1.9rem,5.2vw,3rem);margin:14px 0 4px;position:relative;
+    text-shadow:0 2px 0 #00000022}
+  .hero .sub{font-family:'Charmonman',cursive;font-size:1.4rem;color:#ffe1a6;position:relative}
+  .hero-meta{position:relative;display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:.95rem}
+  .hero-meta span{display:inline-flex;align-items:center;gap:7px;background:#00000022;
+    padding:6px 13px;border-radius:12px;border:1px solid #ffffff22}
+  .durian{position:absolute;right:-26px;bottom:-30px;font-size:8rem;opacity:.16;transform:rotate(-12deg);user-select:none}
+
+  /* ---------- STATS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:16px 16px 14px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+  .stat::after{content:"";position:absolute;top:-20px;right:-20px;width:70px;height:70px;
+    border-radius:50%;background:var(--accent,#f4c43033)}
+  .stat .ico{font-size:1.5rem}
+  .stat .num{font-family:'Chonburi',serif;font-size:2.1rem;line-height:1;color:var(--orange-deep);margin-top:6px}
+  .stat .lab{font-size:.86rem;color:var(--ink-soft);font-weight:600;margin-top:3px}
+
+  /* ---------- PANELS ---------- */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:20px;box-shadow:var(--shadow-sm)}
+  .panel h2{font-family:'Chonburi',serif;font-weight:400;font-size:1.3rem;color:var(--orange-deep);
+    display:flex;align-items:center;gap:9px;margin-bottom:4px}
+  .panel .hint{font-size:.85rem;color:var(--ink-soft);margin-bottom:16px}
+
+  label{display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin:12px 0 5px}
+  input[type=text],select,textarea{width:100%;font-family:inherit;font-size:1rem;color:var(--ink);
+    background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;outline:none;transition:.15s}
+  input[type=text]:focus,select:focus,textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px #c75b1222}
+  textarea{resize:vertical;min-height:60px}
+
+  .seg{display:flex;gap:8px;flex-wrap:wrap}
+  .seg .opt{flex:1;min-width:90px;text-align:center;cursor:pointer;border:1.5px solid var(--line);
+    border-radius:12px;padding:10px 8px;font-weight:600;font-size:.92rem;background:#fff;transition:.15s;user-select:none}
+  .seg .opt:hover{border-color:var(--gold)}
+  .seg .opt.on{background:linear-gradient(135deg,var(--orange),var(--orange-deep));color:#fff;border-color:transparent;box-shadow:var(--shadow-sm)}
+
+  .follower-row{display:flex;align-items:center;gap:10px;margin-top:8px}
+  .stepper{display:flex;align-items:center;gap:0;border:1.5px solid var(--line);border-radius:12px;overflow:hidden}
+  .stepper button{width:42px;height:42px;border:none;background:#fff7ec;font-size:1.3rem;font-weight:700;
+    color:var(--orange);cursor:pointer;transition:.15s}
+  .stepper button:hover{background:var(--gold-soft)}
+  .stepper .val{width:46px;text-align:center;font-weight:700;font-size:1.1rem}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;border:none;
+    font-family:inherit;font-weight:700;font-size:1rem;padding:13px 20px;border-radius:14px;transition:.15s;width:100%}
+  .btn-primary{background:linear-gradient(135deg,var(--gold-soft),var(--orange));color:#5a2a05;box-shadow:var(--shadow)}
+  .btn-primary:hover{transform:translateY(-1px);filter:brightness(1.04)}
+  .btn-primary:active{transform:translateY(0)}
+  .btn-ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink-soft);width:auto;padding:9px 16px;font-size:.9rem}
+  .btn-ghost:hover{border-color:var(--orange);color:var(--orange)}
+
+  .drop{border:2px dashed var(--line);border-radius:14px;padding:18px;text-align:center;cursor:pointer;
+    background:#fffdf8;transition:.15s;color:var(--ink-soft)}
+  .drop:hover{border-color:var(--orange);background:#fff7ec}
+  .drop .big{font-size:1.8rem}
+  .preview{margin-top:10px;position:relative;display:none}
+  .preview img{width:100%;border-radius:12px;border:1px solid var(--line);max-height:240px;object-fit:cover}
+  .preview .rm{position:absolute;top:8px;right:8px;background:#a8430aee;color:#fff;border:none;border-radius:50%;
+    width:30px;height:30px;cursor:pointer;font-size:1rem;font-weight:700}
+
+  /* ---------- LIST ---------- */
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .search{flex:1;min-width:160px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{cursor:pointer;font-size:.82rem;font-weight:600;padding:6px 12px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink-soft)}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  .person{display:flex;align-items:center;gap:12px;padding:11px 12px;border:1px solid var(--line);
+    border-radius:14px;margin-bottom:9px;background:#fff;transition:.15s}
+  .person:hover{box-shadow:var(--shadow-sm)}
+  .person.confirmed{background:linear-gradient(90deg,#f3fae9,#fff);border-color:#cfe6b6}
+  .person.declined{opacity:.6}
+  .ava{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:'Chonburi',serif;
+    font-size:1.1rem;color:#fff;background:linear-gradient(135deg,var(--gold),var(--orange));flex-shrink:0}
+  .person.confirmed .ava{background:linear-gradient(135deg,var(--green),var(--green-deep))}
+  .p-main{flex:1;min-width:0}
+  .p-name{font-weight:700;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .tag{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:999px}
+  .tag.new{background:#ffe6c2;color:var(--orange-deep)}
+  .tag.foll{background:#e3efd4;color:var(--green-deep)}
+  .p-sub{font-size:.8rem;color:var(--ink-soft)}
+  .p-actions{display:flex;gap:6px;align-items:center;flex-shrink:0}
+  .mini{border:1.5px solid var(--line);background:#fff;border-radius:10px;cursor:pointer;font-weight:700;
+    font-size:.82rem;padding:7px 10px;color:var(--ink-soft);transition:.15s}
+  .mini:hover{border-color:var(--orange);color:var(--orange)}
+  .mini.go.on{background:var(--green);color:#fff;border-color:var(--green)}
+  .mini.no.on{background:#b34a2a;color:#fff;border-color:#b34a2a}
+  .mini.thumb{padding:0;width:38px;height:38px;overflow:hidden}
+  .mini.thumb img{width:100%;height:100%;object-fit:cover}
+  .pop-foll{display:flex;align-items:center;gap:4px}
+  .pop-foll button{width:28px;height:28px;border-radius:8px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-weight:700;color:var(--orange)}
+  .pop-foll .pv{min-width:18px;text-align:center;font-weight:700;font-size:.9rem}
+
+  .empty{text-align:center;color:var(--ink-soft);padding:24px;font-size:.92rem}
+
+  .demo-banner{background:linear-gradient(135deg,#fff0d2,#ffe3b3);border:1.5px dashed #e0a64a;
+    border-radius:14px;padding:11px 14px;margin-bottom:14px;font-size:.86rem;color:#8a5a18;line-height:1.5}
+
+  /* ---------- CONFIG ---------- */
+  .cfg{margin-top:16px;border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}
+  .cfg summary{cursor:pointer;padding:14px 18px;font-weight:700;color:var(--ink-soft);list-style:none;display:flex;align-items:center;gap:8px}
+  .cfg summary::-webkit-details-marker{display:none}
+  .cfg .cfg-body{padding:0 18px 18px}
+  .status-dot{width:9px;height:9px;border-radius:50%;background:#cbb48f;display:inline-block}
+  .status-dot.ok{background:#4caf50;box-shadow:0 0 0 3px #4caf5033}
+  .status-dot.err{background:#d9534f;box-shadow:0 0 0 3px #d9534f33}
+  .code{font-family:ui-monospace,monospace;font-size:.85rem;background:#2c1808;color:#ffd9a0;border-radius:10px;padding:8px 10px;white-space:pre-wrap;word-break:break-all}
+
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);opacity:0;
+    background:var(--ink);color:#fff;padding:12px 22px;border-radius:14px;font-weight:600;box-shadow:var(--shadow);
+    transition:.25s;z-index:99;pointer-events:none}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .toast.err{background:#a8430a}
+
+  .foot{text-align:center;color:var(--ink-soft);font-size:.82rem;margin-top:26px}
+  .foot b{font-family:'Charmonman',cursive;font-size:1.1rem;color:var(--orange)}
+
+  .fee{margin-top:14px;border:1.5px solid #f0c98a;border-radius:14px;overflow:hidden;
+    background:linear-gradient(135deg,#fff4dd,#ffe9c6)}
+  .fee-row{display:flex;justify-content:space-between;align-items:center;padding:11px 14px 4px;font-size:.9rem;color:var(--ink-soft);font-weight:600}
+  .fee-total{padding:0 14px 4px;font-family:'Chonburi',serif;font-size:1.5rem;color:var(--orange-deep)}
+  .fee-total span{color:var(--orange-deep)}
+  .fee-note{padding:4px 14px 12px;font-size:.82rem;color:var(--green-deep);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="hero-badge">🌋 ร้านภูเขาไฟ · อ.ขุนหาญ จ.ศรีสะเกษ</span>
+    <h1>สำรวจรายชื่องานรวมรุ่น</h1>
+    <div class="sub">วพบ.ชัยนาท รุ่นที่ 21 — รำลึกวันวาน สานสัมพันธ์พี่น้อง</div>
+    <div class="hero-meta">
+      <span>🗓️ เสาร์ 25 กรกฎาคม 2569</span>
+      <span>⏰ 18.00 น. เป็นต้นไป</span>
+      <span>🎵 ดนตรีสด 3 วง · 🍴 หน้าทุเรียน</span>
+    </div>
+    <div class="durian">🥭</div>
+  </header>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat" style="--accent:#4d7a3522"><div class="ico">✅</div><div class="num" id="stConfirm">0</div><div class="lab">ยืนยันมาร่วมงาน</div></div>
+    <div class="stat" style="--accent:#e8a82322"><div class="ico">👥</div><div class="num" id="stFoll">0</div><div class="lab">ผู้ติดตาม</div></div>
+    <div class="stat" style="--accent:#c75b1222"><div class="ico">🎉</div><div class="num" id="stTotal">0</div><div class="lab">รวมทั้งหมด (คน)</div></div>
+    <div class="stat" style="--accent:#a8430a22"><div class="ico">✨</div><div class="num" id="stNew">0</div><div class="lab">ลงทะเบียนใหม่</div></div>
+  </section>
+
+  <div class="grid">
+    <!-- NEW REGISTRATION -->
+    <section class="panel">
+      <h2>✨ ลงทะเบียนเพิ่ม (คนใหม่)</h2>
+      <p class="hint">ไม่มีชื่อในรายการ? ลงทะเบียนตรงนี้ พร้อมแนบรูปสลิป/หลักฐานได้</p>
+
+      <label>ชื่อ–เล่น / ชื่อจริง *</label>
+      <input type="text" id="newName" placeholder="เช่น น้องใหม่ รุ่น 21">
+
+      <label>สถานะการมาร่วมงาน</label>
+      <div class="seg" id="newStatus">
+        <div class="opt on" data-v="confirmed">✅ มาแน่นอน</div>
+        <div class="opt" data-v="maybe">🤔 ยังไม่แน่ใจ</div>
+        <div class="opt" data-v="declined">😢 ไม่สะดวก</div>
+      </div>
+
+      <label>มีผู้ติดตามมาด้วยไหม?</label>
+      <div class="follower-row">
+        <div class="seg" style="flex:0 0 auto">
+          <div class="opt" id="folYes" data-v="yes">มี</div>
+          <div class="opt on" id="folNo" data-v="no">ไม่มี</div>
+        </div>
+        <div class="stepper" id="folStepper" style="display:none">
+          <button type="button" id="folMinus">−</button>
+          <span class="val" id="folVal">1</span>
+          <button type="button" id="folPlus">+</button>
+        </div>
+        <span class="p-sub" id="folStepLab" style="display:none">คน</span>
+      </div>
+
+      <div class="fee" id="feeBox">
+        <div class="fee-row"><span>ค่าร่วมงาน 1,500 บาท/คน</span><b id="feeHeads">× 1 คน</b></div>
+        <div class="fee-total">ยอดที่ต้องโอน <span id="feeAmt">1,500</span> บาท</div>
+        <div class="fee-note">💡 โอนเกิน/เหลือ = คืนภายหลัง</div>
+      </div>
+
+      <label>แนบสลิปโอนเงิน * <span class="p-sub" style="font-weight:400">(จำเป็นสำหรับผู้ลงทะเบียนใหม่)</span></label>
+      <div class="drop" id="drop">
+        <div class="big">🧾</div>
+        <div>แตะเพื่อเลือกสลิป หรือลากไฟล์มาวาง</div>
+        <div class="p-sub">รูปจะถูกย่อให้เล็กอัตโนมัติก่อนบันทึก</div>
+      </div>
+      <input type="file" id="fileInput" accept="image/*" style="display:none">
+      <div class="preview" id="preview"><img id="previewImg" alt=""><button class="rm" id="rmImg" title="ลบรูป">✕</button></div>
+
+      <label>หมายเหตุ (ถ้ามี)</label>
+      <textarea id="newNote" placeholder="เช่น มาช่วงค่ำ / แพ้อาหารทะเล"></textarea>
+
+      <button class="btn btn-primary" id="btnRegister" style="margin-top:16px">＋ บันทึกลงทะเบียน</button>
+    </section>
+
+    <!-- LIST -->
+    <section class="panel">
+      <h2>📋 รายชื่อสำรวจ</h2>
+      <p class="hint">แตะ <b>มา</b>/<b>ไม่มา</b> เพื่อยืนยัน และกด +/− เพื่อระบุจำนวนผู้ติดตาม</p>
+
+      <div class="toolbar">
+        <input type="text" class="search" id="search" placeholder="🔍 ค้นหาชื่อ...">
+      </div>
+      <div class="chips" id="chips" style="margin-bottom:14px">
+        <span class="chip on" data-f="all">ทั้งหมด</span>
+        <span class="chip" data-f="confirmed">✅ มา</span>
+        <span class="chip" data-f="pending">⏳ ยังไม่ตอบ</span>
+        <span class="chip" data-f="declined">😢 ไม่มา</span>
+        <span class="chip" data-f="new">✨ ลงใหม่</span>
+      </div>
+
+      <div id="list"><div class="empty">กำลังเชื่อมต่อฐานข้อมูล…</div></div>
+
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <button class="btn-ghost" id="btnExport">⬇️ ดาวน์โหลด CSV</button>
+        <button class="btn-ghost" id="btnSeed">🌱 โหลดรายชื่อตั้งต้น 29 คน</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- FIREBASE CONFIG -->
+  <details class="cfg">
+    <summary><span class="status-dot" id="fbDot"></span> ⚙️ ตั้งค่า Firebase <span id="fbState" class="p-sub" style="margin-left:auto;font-weight:600"></span></summary>
+    <div class="cfg-body">
+      <p class="p-sub" style="margin-bottom:10px">วางค่า config จาก Firebase Console (Project settings → Your apps → SDK setup) ลงในไฟล์ส่วน <b>firebaseConfig</b> ด้านล่างของไฟล์นี้ แล้วเปิดใช้ Firestore Database ในโหมด test/production</p>
+      <div class="code">// กฎ Firestore แบบเปิดให้ทุกคนอ่าน–เขียน (เหมาะกับงานชั่วคราว ปิดหลังจบงาน)
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{db}/documents {
+    match /reunion_ch21/{doc} {
+      allow read, write: if true;
+    }
+  }
+}</div>
+    </div>
+  </details>
+
+  <p class="foot">สร้างด้วย ❤️ สำหรับ <b>รวมรุ่น วพบ.ชัยนาท 21</b> · แล้วพบกันที่ศรีสะเกษ</p>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, doc, setDoc, addDoc, updateDoc, onSnapshot, serverTimestamp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* ============================================================
+   1) วางค่า Firebase ของคุณตรงนี้
+   ============================================================ */
+const firebaseConfig = {
+  apiKey: "AIzaSyDt23cc0jrbBlkxTouhO-gjORbBUKbbzqU",
+  authDomain: "namegen21meeting.firebaseapp.com",
+  projectId: "namegen21meeting",
+  storageBucket: "namegen21meeting.firebasestorage.app",
+  messagingSenderId: "380989228834",
+  appId: "1:380989228834:web:399d293171a01fdf68077b"
+};
+const COLLECTION = "reunion_ch21";
+const FEE = 1500; // ค่าร่วมงานต่อคน (บาท)
+/* ============================================================ */
+
+const SEED = ["บีบี","โจ้","ปาร์ม","ติส","ฝ้าย","มุก","โอโม","พาย","ป๊อก","อั้ม","แพท","แป้ง (1)","เอ","แต้ม","ปราง","อุ๊","อั๋น","ฟ้า","รัตน์","อิ่ม","ปริญ","ต้น","อมร","อาร์","พิมพ์","โอ๋","ขวัญ","น้ำ","กชนันท์"];
+
+const $ = s => document.querySelector(s);
+const toast = (msg,err=false)=>{const t=$("#toast");t.textContent=msg;t.className="toast show"+(err?" err":"");setTimeout(()=>t.className="toast",2200);};
+
+let db=null, ready=false, demo=false, guests=[], filter="all", search="";
+
+/* ---- Firebase init ---- */
+try{
+  if(firebaseConfig.apiKey==="YOUR_API_KEY") throw new Error("ยังไม่ได้ใส่ config");
+  const app=initializeApp(firebaseConfig);
+  db=getFirestore(app);
+  ready=true;
+  $("#fbDot").className="status-dot ok";
+  $("#fbState").textContent="เชื่อมต่อแล้ว";
+  subscribe();
+}catch(e){
+  demo=true;
+  $("#fbDot").className="status-dot err";
+  $("#fbState").textContent="โหมดตัวอย่าง · ยังไม่เชื่อม Firebase";
+  startDemo();
+}
+
+function startDemo(){
+  guests=SEED.map((n,i)=>({id:"demo_"+i,name:n,status:"pending",followers:0,isNew:false,photo:null,note:null,order:i}));
+  const host=$("#list");
+  if(!$("#demoBanner")){
+    const b=document.createElement("div");
+    b.id="demoBanner";b.className="demo-banner";
+    b.innerHTML="👀 <b>โหมดตัวอย่าง</b> — นี่คือหน้าตาเมื่อมีรายชื่อจริง ลองติ๊ก/ลงทะเบียนเล่นได้เลย แต่ยัง<b>ไม่บันทึกถาวร</b> จนกว่าจะใส่ค่า Firebase ในไฟล์";
+    host.parentNode.insertBefore(b,host);
+  }
+  render();
+}
+
+let seedTried=false;
+function subscribe(){
+  onSnapshot(collection(db,COLLECTION),snap=>{
+    if(snap.empty && !seedTried){seedTried=true;seedInitial();return;}
+    guests=snap.docs.map(d=>({id:d.id,...d.data()}))
+      .sort((a,b)=>(a.order??999)-(b.order??999)
+        || ((a.createdAt?.seconds||0)-(b.createdAt?.seconds||0))
+        || (a.name||"").localeCompare(b.name||"",'th'));
+    render();
+  },err=>{toast("อ่านข้อมูลไม่สำเร็จ: "+err.message,true);});
+}
+async function seedInitial(){
+  try{
+    await Promise.all(SEED.map((n,i)=>setDoc(doc(db,COLLECTION,"seed_"+i),{
+      name:n,status:"pending",followers:0,isNew:false,photo:null,note:null,order:i,createdAt:serverTimestamp()
+    },{merge:true})));
+  }catch(e){toast("โหลดรายชื่อตั้งต้นไม่สำเร็จ",true);}
+}
+
+/* ---- รูป: ย่อขนาด → base64 ---- */
+let pendingPhoto=null;
+function compress(file){
+  return new Promise((res,rej)=>{
+    const img=new Image(), r=new FileReader();
+    r.onload=()=>img.src=r.result;
+    r.onerror=rej;
+    img.onload=()=>{
+      const max=900;let{width:w,height:h}=img;
+      if(w>h&&w>max){h=h*max/w;w=max;}else if(h>max){w=w*max/h;h=max;}
+      const c=document.createElement("canvas");c.width=w;c.height=h;
+      c.getContext("2d").drawImage(img,0,0,w,h);
+      res(c.toDataURL("image/jpeg",0.6));
+    };
+    img.onerror=rej;
+    r.readAsDataURL(file);
+  });
+}
+const drop=$("#drop"),fileInput=$("#fileInput");
+drop.onclick=()=>fileInput.click();
+drop.ondragover=e=>{e.preventDefault();drop.style.borderColor="#c75b12";};
+drop.ondragleave=()=>drop.style.borderColor="";
+drop.ondrop=e=>{e.preventDefault();drop.style.borderColor="";if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0]);};
+fileInput.onchange=e=>{if(e.target.files[0])handleFile(e.target.files[0]);};
+async function handleFile(f){
+  if(!f.type.startsWith("image/"))return toast("กรุณาเลือกไฟล์รูปภาพ",true);
+  pendingPhoto=await compress(f);
+  $("#previewImg").src=pendingPhoto;
+  $("#preview").style.display="block";
+}
+$("#rmImg").onclick=()=>{pendingPhoto=null;$("#preview").style.display="none";fileInput.value="";};
+
+/* ---- ฟอร์ม: สถานะ + ผู้ติดตาม ---- */
+let newStatus="confirmed", folCount=0;
+function updateFee(){
+  const heads=1+folCount;
+  $("#feeHeads").textContent="× "+heads+" คน";
+  $("#feeAmt").textContent=(heads*FEE).toLocaleString("th-TH");
+}
+$("#newStatus").onclick=e=>{const o=e.target.closest(".opt");if(!o)return;
+  [...$("#newStatus").children].forEach(x=>x.classList.remove("on"));o.classList.add("on");newStatus=o.dataset.v;};
+$("#folYes").onclick=()=>{$("#folYes").classList.add("on");$("#folNo").classList.remove("on");
+  folCount=Math.max(1,folCount);$("#folVal").textContent=folCount;
+  $("#folStepper").style.display="flex";$("#folStepLab").style.display="inline";updateFee();};
+$("#folNo").onclick=()=>{$("#folNo").classList.add("on");$("#folYes").classList.remove("on");
+  folCount=0;$("#folStepper").style.display="none";$("#folStepLab").style.display="none";updateFee();};
+$("#folPlus").onclick=()=>{folCount++;$("#folVal").textContent=folCount;updateFee();};
+$("#folMinus").onclick=()=>{folCount=Math.max(1,folCount-1);$("#folVal").textContent=folCount;updateFee();};
+
+/* ---- บันทึกคนใหม่ ---- */
+$("#btnRegister").onclick=async()=>{
+  const name=$("#newName").value.trim();
+  if(!name)return toast("กรุณากรอกชื่อ",true);
+  if(!pendingPhoto)return toast("กรุณาแนบสลิปโอนเงิน",true);
+  const rec={name,status:newStatus,followers:folCount,isNew:true,photo:pendingPhoto,
+    note:$("#newNote").value.trim()||null,amount:(1+folCount)*FEE,order:1000};
+  if(demo){
+    guests.push({id:"demo_new_"+Date.now(),...rec,createdAt:{seconds:Date.now()/1000}});
+    toast("บันทึก (ตัวอย่าง) 🎉");
+    $("#newName").value="";$("#newNote").value="";$("#rmImg").click();$("#folNo").click();render();return;
+  }
+  if(!ready)return toast("ยังไม่ได้ตั้งค่า Firebase",true);
+  try{
+    await addDoc(collection(db,COLLECTION),{...rec,createdAt:serverTimestamp()});
+    toast("บันทึกเรียบร้อย 🎉");
+    $("#newName").value="";$("#newNote").value="";
+    $("#rmImg").click();$("#folNo").click();
+  }catch(e){toast("บันทึกไม่สำเร็จ: "+e.message,true);}
+};
+
+/* ---- รายชื่อตั้งต้น 29 คน ---- */
+$("#btnSeed").onclick=async()=>{
+  if(demo){startDemo();return toast("รีเซ็ตรายชื่อตัวอย่างแล้ว 🌱");}
+  if(!ready)return toast("ยังไม่ได้ตั้งค่า Firebase",true);
+  if(guests.length && !confirm("มีข้อมูลอยู่แล้ว ต้องการเพิ่มรายชื่อตั้งต้นซ้ำหรือไม่?"))return;
+  try{
+    await Promise.all(SEED.map((n,i)=>setDoc(doc(db,COLLECTION,"seed_"+i),{
+      name:n,status:"pending",followers:0,isNew:false,photo:null,note:null,order:i,createdAt:serverTimestamp()
+    },{merge:true})));
+    toast("โหลดรายชื่อ 29 คนแล้ว 🌱");
+  }catch(e){toast("ไม่สำเร็จ: "+e.message,true);}
+};
+
+/* ---- อัปเดตในรายการ ---- */
+async function patch(id,data){
+  if(demo){const g=guests.find(x=>x.id===id);if(g)Object.assign(g,data);render();return;}
+  try{await updateDoc(doc(db,COLLECTION,id),data);}catch(e){toast("อัปเดตไม่สำเร็จ",true);}
+}
+window.__setStatus=(id,s)=>{const g=guests.find(x=>x.id===id);patch(id,{status:g.status===s?"pending":s});};
+window.__fol=(id,d)=>{const g=guests.find(x=>x.id===id);patch(id,{followers:Math.max(0,(g.followers||0)+d)});};
+window.__showPhoto=src=>{const w=window.open("");w.document.write('<img src="'+src+'" style="max-width:100%">');};
+
+/* ---- ค้นหา/ฟิลเตอร์ ---- */
+$("#search").oninput=e=>{search=e.target.value.trim().toLowerCase();render();};
+$("#chips").onclick=e=>{const c=e.target.closest(".chip");if(!c)return;
+  [...$("#chips").children].forEach(x=>x.classList.remove("on"));c.classList.add("on");filter=c.dataset.f;render();};
+
+/* ---- render ---- */
+function render(){
+  const conf=guests.filter(g=>g.status==="confirmed");
+  const foll=guests.reduce((s,g)=>s+(g.status==="confirmed"?(g.followers||0):0),0);
+  $("#stConfirm").textContent=conf.length;
+  $("#stFoll").textContent=foll;
+  $("#stTotal").textContent=conf.length+foll;
+  $("#stNew").textContent=guests.filter(g=>g.isNew).length;
+
+  let rows=guests.filter(g=>{
+    if(search && !(g.name||"").toLowerCase().includes(search))return false;
+    if(filter==="confirmed")return g.status==="confirmed";
+    if(filter==="declined")return g.status==="declined";
+    if(filter==="pending")return !g.status||g.status==="pending"||g.status==="maybe";
+    if(filter==="new")return g.isNew;
+    return true;
+  });
+  const list=$("#list");
+  if(!ready)return;
+  if(!rows.length){list.innerHTML='<div class="empty">ไม่พบรายชื่อ<br><span class="p-sub">ลองกด “โหลดรายชื่อตั้งต้น 29 คน”</span></div>';return;}
+
+  list.innerHTML=rows.map(g=>{
+    const st=g.status||"pending";
+    const cls=st==="confirmed"?"confirmed":st==="declined"?"declined":"";
+    const init=(g.name||"?").replace(/\(.*\)/,"").trim().charAt(0);
+    const photo=g.photo?`<button class="mini thumb" onclick="__showPhoto('${g.photo}')"><img src="${g.photo}"></button>`:"";
+    const folTag=g.followers>0?`<span class="tag foll">+${g.followers} ผู้ติดตาม</span>`:"";
+    const newTag=g.isNew?`<span class="tag new">ลงใหม่</span>`:"";
+    const amtTag=g.isNew&&g.amount?`<span class="tag foll" style="background:#dfeede">โอน ${g.amount.toLocaleString("th-TH")} ฿</span>`:"";
+    const note=g.note?`<div class="p-sub">📝 ${esc(g.note)}</div>`:"";
+    return `<div class="person ${cls}">
+      <div class="ava">${esc(init)}</div>
+      <div class="p-main">
+        <div class="p-name">${esc(g.name)} ${newTag} ${folTag} ${amtTag}</div>
+        <div class="p-sub">${st==="confirmed"?"✅ ยืนยันมา":st==="declined"?"😢 ไม่สะดวก":st==="maybe"?"🤔 ยังไม่แน่ใจ":"⏳ ยังไม่ตอบ"}</div>
+        ${note}
+      </div>
+      <div class="p-actions">
+        ${photo}
+        <div class="pop-foll" title="จำนวนผู้ติดตาม">
+          <button onclick="__fol('${g.id}',-1)">−</button>
+          <span class="pv">${g.followers||0}</span>
+          <button onclick="__fol('${g.id}',1)">＋</button>
+        </div>
+        <button class="mini go ${st==="confirmed"?"on":""}" onclick="__setStatus('${g.id}','confirmed')">มา</button>
+        <button class="mini no ${st==="declined"?"on":""}" onclick="__setStatus('${g.id}','declined')">ไม่มา</button>
+      </div>
+    </div>`;
+  }).join("");
+}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+
+/* ---- CSV ---- */
+$("#btnExport").onclick=()=>{
+  if(!guests.length)return toast("ยังไม่มีข้อมูล",true);
+  const head=["ชื่อ","สถานะ","ผู้ติดตาม","ลงใหม่","ยอดโอน(บาท)","หมายเหตุ"];
+  const map={confirmed:"มา",declined:"ไม่มา",maybe:"ยังไม่แน่ใจ",pending:"ยังไม่ตอบ"};
+  const rows=guests.map(g=>[g.name,map[g.status||"pending"],g.followers||0,g.isNew?"ใช่":"",g.amount||"",g.note||""]
+    .map(v=>`"${String(v).replace(/"/g,'""')}"`).join(","));
+  const blob=new Blob(["\uFEFF"+[head.join(","),...rows].join("\n")],{type:"text/csv"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+  a.download="รวมรุ่น_วพบชัยนาท21.csv";a.click();
+};
+</script>
+</body>
+</html>
